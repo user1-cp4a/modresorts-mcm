@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devchan-modresortchan-deployment
+  labels:
+    app: modresortchan
+spec:
+  selector:
+    matchLabels:
+      app: modresortchan
+      release: modresort-devchan
+      tier: frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: modresortchan
+        release: modresort-devchan
+        tier: frontend
+    spec:
+       containers:
+         - name: frontend
+           image: "hgrange/modresort:1.0"
+           imagePullPolicy: IfNotPresent
+           ports:
+             - containerPort: 9080
+           env:
+           - name: GET_HOSTS_FROM
+             value: dns
+           - name: WLP_LOGGING_CONSOLE_FORMAT
+             value: json
+           - name: WLP_LOGGING_CONSOLE_LOGLEVEL
+             value: info
+           - name: WLP_LOGGING_CONSOLE_SOURCE
+             value: message,trace,accessLog,ffdc
