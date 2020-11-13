@@ -4,6 +4,8 @@ metadata:
   name: devchan-modresortchan-deployment
   labels:
     app: modresortchan
+    component: main
+    package: modresort
 spec:
   selector:
     matchLabels:
