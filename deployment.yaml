@@ -6,7 +6,7 @@ metadata:
     app: modresortchan
     component: main
     package: modresort
-    modresort101: true
+    release: modresort101
 spec:
   selector:
     matchLabels:
